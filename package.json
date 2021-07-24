@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon --inspect app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "apidoc -i api/ -o docs/"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,12 @@
     "nodemon": "^2.0.12"
   },
   "dependencies": {
+    "apidoc": "^0.28.1",
     "express": "^4.17.1",
     "morgan": "^1.10.0"
+  },
+  "apidoc": {
+    "title": "Resume Builder API Docs",
+    "url": "http://localhost:3001/api"
   }
 }
