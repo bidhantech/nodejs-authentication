@@ -1,0 +1,45 @@
+{
+  "name": "resume-builder-api",
+  "version": "0.0.1",
+  "description": "Resume Builder API",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon --inspect app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "apidoc -i api/ -o docs/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bidhantech/resume-builder-api.git"
+  },
+  "keywords": [
+    "resume-builder",
+    "resume",
+    "backend",
+    "node.js",
+    "npm",
+    "express",
+    "mongodb"
+  ],
+  "author": "Bidhan Chandra Ghosh",
+  "license": "GNU General Public License v3.0",
+  "bugs": {
+    "url": "https://github.com/bidhantech/resume-builder-api/issues"
+  },
+  "homepage": "https://github.com/bidhantech/resume-builder-api#readme",
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "eslint": "^7.31.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "apidoc": "^0.28.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3",
+    "morgan": "^1.10.0"
+  },
+  "apidoc": {
+    "title": "Resume Builder API Docs",
+    "url": "http://localhost:3001/api"
+  }
+}
