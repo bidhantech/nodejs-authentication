@@ -1,7 +1,6 @@
 # resume-builder-api
 Project Name: Resume Builder API    
-Author: Bidhan Chandra Ghosh    
-LinkedIn: [Bidhan Chandra Ghosh](https://www.linkedin.com/in/bidhan-chandra-ghosh/)   
+Author: [Bidhan Chandra Ghosh](https://www.linkedin.com/in/bidhan-chandra-ghosh/)   
 
 ## Project Setup on your local machine
 ##### Rename env.sample to .env and change the env variables accordingly if required.
