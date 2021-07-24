@@ -1,12 +1,30 @@
 const express = require("express")
-require("dotenv").config()
 const app = express()
-const morgan = require("morgan")
+const mongoose = require("mongoose")
+const apiRoutes = require("./api/index")
 
-const port = process.env.PORT_NUMBER
+// logger to log request & response info
+const morgan = require("morgan")
 const logger = morgan(":method :url :status - :response-time ms")
 
-const apiRoutes = require("./api/index")
+// environment variables
+require("dotenv").config()
+const port = process.env.PORT_NUMBER
+const dbUrl = process.env.DB_CONNECTION_STRING
+
+// Handle Database connection
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
+const db = mongoose.connection
+db.on("connected", () => {
+    console.log("Successfully connected to database...")
+})
+db.on("error", () => {
+    console.log("Error connecting to database...")
+})
 
 
 app.use(logger)
@@ -14,5 +32,5 @@ app.use(express.json())
 app.use("/api", apiRoutes)
 
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`)
+    console.log(`Server is listening on port: ${port}...`)
 })
