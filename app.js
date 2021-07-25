@@ -31,6 +31,7 @@ db.on("error", () => {
 app.use(logger)
 app.use(express.json())
 app.use("/api", apiRoutes)
+app.use("/docs", express.static(__dirname + "/docs"));
 
 app.listen(port, () => {
     console.log(`Server is listening on port: ${port}...`)
