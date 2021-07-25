@@ -63,12 +63,12 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 401 Authentication Error\n{\n \"error\": \"Email or password is incorrect!\"\n}",
+          "content": "HTTP/1.1 401 Authentication Error\n{\n \"messsage\": \"Email or password is incorrect!\"\n}",
           "type": "json"
         },
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n \"error\": \"Error Message\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n \"messsage\": \"Error Message\"\n}",
           "type": "json"
         }
       ]
@@ -155,12 +155,12 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n \"error\": \"Email already exists!\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n \"messsage\": \"Email already exists!\"\n}",
           "type": "json"
         },
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n \"error\": \"Error Message\"\n}",
+          "content": "HTTP/1.1 400 Bad Request\n{\n \"messsage\": \"Error Message\"\n}",
           "type": "json"
         }
       ]
@@ -168,5 +168,53 @@
     "version": "0.0.0",
     "filename": "api/routes/auth.js",
     "groupTitle": "Auth"
+  },
+  {
+    "type": "get",
+    "url": "/users/me",
+    "title": "Get LoggedIn User Details",
+    "name": "Me_API",
+    "group": "Users",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>Authorization header in the format: Bearer jwttoken</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example:",
+          "content": "{\n  \"authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfdXNlcklkIjoiNjBmY2NhMzU4Nzg3ODQzMjI1ZGNkNWEyNTkiLCJpYXQiOjE2MjcxODc1MTIsImV4cCI6MTYyNzI3MzkxMn0.n_oCLc0shsU2DErB6F2ECRQOjQczannoLowo80JZVhI\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n{\n  \"_id\": \"60fcca35a2d43225dcd5a256\",\n  \"isEmailVerified\": false,\n  \"firstName\": \"Test\",\n  \"middleName\": \"ok\",\n  \"lastName\": \"User\",\n  \"email\": \"test5@example.com\",\n  \"createdAt\": \"2021-07-25T04:51:55.943Z\",\n  \"updatedAt\": \"2021-07-25T04:51:55.943Z\",\n  \"__v\": 0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 401 Authentication Error\n{\n \"message\": \"Token missing from Authorization header!\"\n} \n\nHTTP/1.1 401 Authentication Error\n{\n \"message\": \"Invalid jwt token!\"\n} \n\nHTTP/1.1 404 Not Found Error\n{\n \"message\": \"User Not Found!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "api/routes/user.js",
+    "groupTitle": "Users"
   }
 ]

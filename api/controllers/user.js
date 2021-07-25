@@ -1,5 +1,5 @@
-const { BadRequestError, AuthenticationError } = require("../services/errors")
-const { createUser, findUserByEmail } = require("../services/user")
+const { BadRequestError, AuthenticationError, NotFoundError } = require("../services/errors")
+const { createUser, findUserByEmail, findUserById } = require("../services/user")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
@@ -56,15 +56,28 @@ const loginUser = async (data) => {
         }
 
         // generate jwt token
-        const token = await jwt.sign({_userId: user._id, email: user.email, firstName: user.name}, process.env.JWT_SECRET, { expiresIn: 90 })
+        const token = jwt.sign({ _userId: user._id, email: user.email, firstName: user.name }, process.env.JWT_SECRET, { expiresIn: Number(process.env.JWT_EXPIRY_IN_SECONDS) })
         return token
     } catch (error) {
         throw AuthenticationError(error.message)
     }
 }
 
+const getUserById = async (userId) => {
+    try {
+        const userDetails = await findUserById(userId)
+        if(!userDetails) {
+            throw NotFoundError("User Not Found!")
+        }
+        return userDetails
+    } catch (error) {
+        throw NotFoundError(error.message)
+    }
+}
+
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getUserById
 }

@@ -8,6 +8,10 @@ const findUserByEmail = async (email, selectPassword = false) => {
     return UserModel.findOne({email}).lean().exec()
 }
 
+const findUserById = async (_id) => {
+  return UserModel.findOne({_id}).lean().exec()
+}
+
 const createUser = async (userDetails) => {
     try {
       const createdUser = await UserModel.create(userDetails)
@@ -21,5 +25,6 @@ const createUser = async (userDetails) => {
 
 module.exports = {
     createUser,
-    findUserByEmail
+    findUserByEmail,
+    findUserById
 }

@@ -28,13 +28,13 @@ const router = express.Router()
  * @apiErrorExample Error-Response:
  *  HTTP/1.1 401 Authentication Error
  *  {
- *   "error": "Email or password is incorrect!"
+ *   "messsage": "Email or password is incorrect!"
  *  } 
  * 
  * @apiErrorExample Error-Response:
  *  HTTP/1.1 400 Bad Request
  *  {
- *   "error": "Error Message"
+ *   "messsage": "Error Message"
  *  }
  *
  */
@@ -78,13 +78,13 @@ router.post("/login", async (req, res) => {
  * @apiErrorExample Error-Response:
  *  HTTP/1.1 400 Bad Request
  *  {
- *   "error": "Email already exists!"
+ *   "messsage": "Email already exists!"
  *  }
  * 
  * @apiErrorExample Error-Response:
  *  HTTP/1.1 400 Bad Request
  *  {
- *   "error": "Error Message"
+ *   "messsage": "Error Message"
  *  }
  */
 router.post("/register", async (req, res) => {
