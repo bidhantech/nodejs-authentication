@@ -5,11 +5,31 @@ define({ "api": [
     "title": "Verify Email of User",
     "name": "Verify_Email_API",
     "group": "Auth",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>Verification code as received in the email</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "    HTTP/1.1 200 OK\n{\n \"message\": \"User verified successfully!\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n \"message\": \"User verified successfully!\"\n}",
           "type": "json"
         }
       ]
