@@ -33,16 +33,17 @@ const router = express.Router()
  *   "message": "Token missing from Authorization header!"
  *  } 
  * 
+ * @apiErrorExample Error-Response:
  *  HTTP/1.1 401 Authentication Error
  *  {
  *   "message": "Invalid jwt token!"
  *  }
- * 
+ * @apiErrorExample Error-Response:
  *  HTTP/1.1 401 Authentication Error
  *  {
  *   "message": "jwt expired"
  *  } 
- * 
+ * @apiErrorExample Error-Response:
  *  HTTP/1.1 404 Not Found Error
  *  {
  *   "message": "User Not Found!"

@@ -96,6 +96,30 @@ router.post("/register", async (req, res) => {
     }
 })
 
+/**
+ * @api {get} /auth/verifyEmail Verify Email of User
+ * @apiName Verify Email API
+ * @apiGroup Auth
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ * {
+ *  "message": "User verified successfully!"
+ * }
+ *
+ * @apiErrorExample Error-Response:
+ *  HTTP/1.1 401 BadRequest Error
+ *  {
+ *   "message": "Invalid Request!"
+ *  } 
+ * 
+ * @apiErrorExample Error-Response:
+ *  HTTP/1.1 400 BadRequest Error
+ *  {
+ *   "message": "Invalid Code!"
+ *  } 
+ *
+ */
 router.get("/verifyEmail", async (req, res) => {
     try {
         const response = await verifyUserEmail(req.query)
