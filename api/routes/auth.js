@@ -101,8 +101,11 @@ router.post("/register", async (req, res) => {
  * @apiName Verify Email API
  * @apiGroup Auth
  *
+ * @apiParam {String} email Email of the user
+ * @apiParam {String} code Verification code as received in the email
+ * 
  * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
+ * HTTP/1.1 200 OK
  * {
  *  "message": "User verified successfully!"
  * }
