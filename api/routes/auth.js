@@ -1,4 +1,5 @@
 const express = require("express")
+const { registerUser, loginUser } = require("../controllers/user")
 const router = express.Router()
 
 /**
@@ -6,12 +7,16 @@ const router = express.Router()
  * @apiName login
  * @apiGroup Auth
  *
- * @apiParam {String} email of the user.
- * @apiParam {String} password of the user.
+ * @apiParam {String} email
+ * @apiParam {String} password
+ * @apiParamExample {json} Request-Example:
+ *  {
+ *   "email": "test5@example.com",
+ *   "password": "test1234"
+ *  }
  *
- * @apiSuccess {Object} data data object
- * @apiSuccess {String} data.jwt_token JWT Token
- * @apiSuccess {String} data.message Success Message
+ * @apiSuccess {String} jwt_token JWT Token
+ * @apiSuccess {String} message Success Message
  * 
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -20,13 +25,75 @@ const router = express.Router()
  *       "message": "Logged In Successfully"
  *     }
  *
+ * @apiErrorExample Error-Response:
+ *  HTTP/1.1 401 Authentication Error
+ *  {
+ *   "error": "Email or password is incorrect!"
+ *  } 
+ * 
+ * @apiErrorExample Error-Response:
+ *  HTTP/1.1 400 Bad Request
+ *  {
+ *   "error": "Error Message"
+ *  }
+ *
  */
-router.post("/login", (req, res) => {
-    res.status(200).send({"message": "Login route is working..."})
+router.post("/login", async (req, res) => {
+    try {
+        const response = await loginUser(req.body)
+        res.status(200).json({message: "Logged In Successfully!", "jwt_token": response})
+    } catch (error) {
+        res.status(error.status).json({ message: error.message })
+    }
 })
 
-router.post("/register", (req, res) => {
-    res.status(201).send({"message": "User Created Successfully!"})
+
+/**
+ * @api {post} /auth/register Register User
+ * @apiName registerUser
+ * @apiGroup Auth
+ *
+ * @apiParam {String} firstName
+ * @apiParam {String} middleName
+ * @apiParam {String} lastName
+ * @apiParam {String} email
+ * @apiParam {String} password
+ * 
+ * @apiParamExample {json} Request-Example:
+ *  {
+ *   "email": "test5@example.com",
+ *   "password": "test1234",
+ *   "firstName": "Test",
+ *   "middleName": "ok",
+ *   "lastName": "User"
+ *  }
+ * @apiSuccess {String} message Success Message
+ * 
+ * @apiSuccessExample Success-Response:
+ *  HTTP/1.1 201 Created
+ *  {
+ *   "message": "User Registered Successfully! Please verify Email!"
+ *  }
+ *
+ * @apiErrorExample Error-Response:
+ *  HTTP/1.1 400 Bad Request
+ *  {
+ *   "error": "Email already exists!"
+ *  }
+ * 
+ * @apiErrorExample Error-Response:
+ *  HTTP/1.1 400 Bad Request
+ *  {
+ *   "error": "Error Message"
+ *  }
+ */
+router.post("/register", async (req, res) => {
+    try {
+        const response = await registerUser(req.body)
+        res.status(201).json(response)
+    } catch (error) {
+        res.status(error.status).json({ message: error.message })
+    }
 })
 
 module.exports = router

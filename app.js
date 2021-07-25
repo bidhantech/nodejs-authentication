@@ -15,7 +15,8 @@ const dbUrl = process.env.DB_CONNECTION_STRING
 // Handle Database connection
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 })
 
 const db = mongoose.connection
