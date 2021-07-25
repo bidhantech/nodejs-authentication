@@ -8,7 +8,7 @@ const AuthenticationError = (message = "Authentication Error!") => {
     return createError(401, message)
 }
 
-const ForbiddenError = (message = "Something Went Wrong!") => {
+const ForbiddenError = (message = "You are not allowed to access this resource!") => {
     return createError(403, message)
 }
 

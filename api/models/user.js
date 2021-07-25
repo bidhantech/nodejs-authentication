@@ -22,6 +22,10 @@ const userSchema = new Schema({
             return validator.isEmail(email)
         }
     },
+    emailVerificationCode: {
+        type: String,
+        required: true
+    },
     isEmailVerified: {
         type: Boolean,
         default: false

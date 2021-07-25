@@ -1,5 +1,5 @@
 const express = require("express")
-const { registerUser, loginUser } = require("../controllers/user")
+const { registerUser, loginUser, verifyUserEmail } = require("../controllers/user")
 const router = express.Router()
 
 /**
@@ -41,7 +41,7 @@ const router = express.Router()
 router.post("/login", async (req, res) => {
     try {
         const response = await loginUser(req.body)
-        res.status(200).json({message: "Logged In Successfully!", "jwt_token": response})
+        res.status(200).json({ message: "Logged In Successfully!", "jwt_token": response })
     } catch (error) {
         res.status(error.status).json({ message: error.message })
     }
@@ -91,6 +91,15 @@ router.post("/register", async (req, res) => {
     try {
         const response = await registerUser(req.body)
         res.status(201).json(response)
+    } catch (error) {
+        res.status(error.status).json({ message: error.message })
+    }
+})
+
+router.get("/verifyEmail", async (req, res) => {
+    try {
+        const response = await verifyUserEmail(req.query)
+        res.status(200).json(response)
     } catch (error) {
         res.status(error.status).json({ message: error.message })
     }

@@ -208,7 +208,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 401 Authentication Error\n{\n \"message\": \"Token missing from Authorization header!\"\n} \n\nHTTP/1.1 401 Authentication Error\n{\n \"message\": \"Invalid jwt token!\"\n} \n\nHTTP/1.1 404 Not Found Error\n{\n \"message\": \"User Not Found!\"\n}",
+          "content": "HTTP/1.1 401 Authentication Error\n{\n \"message\": \"Token missing from Authorization header!\"\n} \n\nHTTP/1.1 401 Authentication Error\n{\n \"message\": \"Invalid jwt token!\"\n}\n\nHTTP/1.1 401 Authentication Error\n{\n \"message\": \"jwt expired\"\n} \n\nHTTP/1.1 404 Not Found Error\n{\n \"message\": \"User Not Found!\"\n}",
           "type": "json"
         }
       ]

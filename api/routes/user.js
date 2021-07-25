@@ -36,6 +36,11 @@ const router = express.Router()
  *  HTTP/1.1 401 Authentication Error
  *  {
  *   "message": "Invalid jwt token!"
+ *  }
+ * 
+ *  HTTP/1.1 401 Authentication Error
+ *  {
+ *   "message": "jwt expired"
  *  } 
  * 
  *  HTTP/1.1 404 Not Found Error

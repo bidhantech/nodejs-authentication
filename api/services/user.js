@@ -3,7 +3,7 @@ const { BadRequestError } = require("./errors")
 
 const findUserByEmail = async (email, selectPassword = false) => {
     if(selectPassword) {
-        return UserModel.findOne({email}).select("password").lean().exec()
+        return UserModel.findOne({email}).select("password firstName middleName lastName email isEmailVerified emailVerificationCode createdAt updatedAt")
     }
     return UserModel.findOne({email}).lean().exec()
 }
@@ -21,10 +21,19 @@ const createUser = async (userDetails) => {
     }
 }
 
+const updateUserById = async (_id, data) => {
+  try {
+    const updatedUser = await UserModel.updateOne({_id}, {$set: data})
+    return updatedUser
+  } catch (error) {
+    throw BadRequestError(error.message)
+  }
+}
 
 
 module.exports = {
     createUser,
     findUserByEmail,
-    findUserById
+    findUserById,
+    updateUserById
 }
