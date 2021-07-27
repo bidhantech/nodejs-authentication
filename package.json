@@ -4,6 +4,7 @@
   "description": "Resume Builder API",
   "main": "app.js",
   "scripts": {
+    "start": "node --inspect app.js",
     "dev": "nodemon --inspect app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs": "apidoc -i api/ -o docs/"
@@ -27,14 +28,18 @@
     "url": "https://github.com/bidhantech/resume-builder-api/issues"
   },
   "homepage": "https://github.com/bidhantech/resume-builder-api#readme",
+  "engines": {
+    "node": "14.17.3",
+    "npm": "7.20.1"
+  },
   "devDependencies": {
-    "dotenv": "^10.0.0",
     "eslint": "^7.31.0",
     "nodemon": "^2.0.12"
   },
   "dependencies": {
     "apidoc": "^0.28.1",
     "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "http-errors": "^1.7.2",
     "jsonwebtoken": "^8.5.1",

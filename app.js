@@ -9,7 +9,7 @@ const logger = morgan(":method :url :status - :response-time ms")
 
 // environment variables
 require("dotenv").config()
-const port = process.env.PORT_NUMBER
+const port = process.env.PORT || 3001
 const dbUrl = process.env.DB_CONNECTION_STRING
 
 // Handle Database connection
