@@ -1,5 +1,4 @@
-# resume-builder-api [Under Development]
-Project Name: Resume Builder API    
+# node.js basic authentication
 Author: [Bidhan Chandra Ghosh](https://www.linkedin.com/in/bidhan-chandra-ghosh/)   
 
 ## Project Setup on your local machine
