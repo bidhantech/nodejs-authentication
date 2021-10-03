@@ -1,4 +1,4 @@
-# node.js basic authentication
+# node.js authentication
 Author: [Bidhan Chandra Ghosh](https://www.linkedin.com/in/bidhan-chandra-ghosh/)   
 
 ## Project Setup on your local machine
