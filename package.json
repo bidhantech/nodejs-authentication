@@ -1,7 +1,7 @@
 {
-  "name": "resume-builder-api",
+  "name": "node.js-auth-api",
   "version": "0.0.1",
-  "description": "Resume Builder API",
+  "description": "Node.js Authentication API",
   "main": "app.js",
   "scripts": {
     "start": "node --inspect app.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bidhantech/resume-builder-api.git"
+    "url": "git+https://github.com/bidhantech/nodejs-authentication.git"
   },
   "keywords": [
     "resume-builder",
@@ -49,7 +49,7 @@
     "validator": "^13.6.0"
   },
   "apidoc": {
-    "title": "Resume Builder API Docs",
+    "title": "Node.js Authentication Docs",
     "url": "http://localhost:3001/api"
   }
 }
